@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Workers</title>
+    <style>
+        #loader-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .loader {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            text-align: center;
+            }
+
+            @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+    </style>
+</head>
+<body >
+    <h1>Population Sorter</h1>
+    <div style="margin-bottom: 10px;">
+        <select id="order">
+            <option value="ascending">Ascending</option>
+            <option value="descending">Descending</option>
+          </select>
+        <button disabled id="sortWithWebWorkers">Sort With Web Wrokers</button>
+        <button disabled id="sortWithoutWebWorkers">Sort Without Web Wrokers</button>
+        <div id="timeTaken" style="text-align: right;">
+            </div>
+    </div>
+    <table id="populationTable">
+        <thead>
+          <tr>
+            <th>ID Nation</th>
+            <th>Nation</th>
+            <th>ID Year</th>
+            <th>Year</th>
+            <th>Population</th>
+            <th>Slug Nation</th>
+          </tr>
+        </thead>
+        <tbody>
+            <div id="loader-wrapper">
+                <div id="loader" style="display: block;">
+                    <div class="loader"></div>
+                </div>
+            </div>
+          <!-- Data will be dynamically inserted here -->
+        </tbody>
+      </table>
+    <script src="script.js"></script>
+</body>
+</html>
